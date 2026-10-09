@@ -64,25 +64,28 @@
         hyper_tap: hyper_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "HYPER_TAP";
-            #binding-cells = <1>; 
+            #binding-cells = <2>; 
             tapping-term-ms = <200>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp &kp>;
         };
+        // 1. Define the Sticky Hyper behavior for the tap action
         sk_hyper: sticky_hyper {
             compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <0>; 
+            #binding-cells = <0>;
             bindings = <&kp LC(LA(LS(LGUI)))>;
-            release-after-ms = <1500>; 
+            release-after-ms = <1500>; // Stays active for 1.5s after tapping
             quick-release;
         };
-        mt_hyper: mod_tap_sticky_hyper {
+        // 2. Define the Hold-Tap behavior that joins them
+        hyper_ht: hyper_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <1>;       
-            flavor = "tap-preferred"; 
-            tapping-term-ms = <200>;   
-            bindings = <&kp &sk_hyper>;
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            // First behavior is for the Hold, second behavior is for the Tap
+            bindings = <&kp>, <&sk_hyper>; 
         };
     }; // Fixed: Added missing closing brace for behaviors block
 
@@ -99,7 +102,7 @@
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &lt 1 ESC &hml LCTRL A &hmsl LSHIFT S &hml LALT D &hml LGUI F &kp G   &kp H &hmr RGUI J  &hmr RALT K     &hmsr RSHIFT L   &hmr RCTRL SEMI &kp SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &hyper_tap LC(LS(LA(LGUI))) GRAVE &lt 2 SPACE  &mt LSHIFT TAB   &kp RET &lt 3 SPACE &mt_hyper LC(LA(LS(LGUI)))
+                  &hyper_tap LC(LS(LA(LGUI))) GRAVE &lt 2 SPACE  &mt LSHIFT TAB   &kp RET &lt 3 SPACE &hyper_ht LC(LA(LS(LGUI))) 0
             >;
         };
         nav_layer {
