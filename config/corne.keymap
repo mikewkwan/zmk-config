@@ -71,22 +71,25 @@
             // Hardcode the Hyper combo as the first (hold) binding:
             bindings = <&kp LC(LS(LA(LGUI)))>, <&kp>; 
         };
-        /* Define the Custom Sticky Hyper for the Tap action (Hardcoded) */
+         /* 1. Define the hardcoded Sticky Hyper (Tap) */
         sk_hyper: sticky_hyper {
             compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <0>; // Changed to 0 since the keycode is hardcoded
+            #binding-cells = <0>; 
             bindings = <&kp LC(LA(LS(LGUI)))>;
             release-after-ms = <1500>; 
             quick-release;
         };
 
-        /* Define the Mod-Tap combination (Hardcoded) */
+        /* 2. Wrap them inside a Tap-Dance instead of Hold-Tap */
+        /* Tap-Dance natively supports 0-parameter custom behaviors! */
         mt_hyper: mod_tap_sticky_hyper {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>; // Changed to 0 so it requires no arguments in the keymap
-            flavor = "tap-preferred"; 
-            tapping-term-ms = <200>;   
-            bindings = <&kp LC(LA(LS(LGUI))), &sk_hyper>; // Hold left, Tap right
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>; // Hold detection window
+            bindings = <&sk_hyper>, <&kp LC(LA(LS(LGUI)))>; 
+            /* Note: Tap-dance runs bindings sequentially based on actions:
+               Single Tap = 1st behavior (&sk_hyper)
+               Press & Hold = 2nd behavior (&kp Hyper) */
         };
     };
 };
