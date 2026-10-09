@@ -113,7 +113,7 @@
                   &hyper_tap GRAVE &lt 2 SPACE  &mt LSHIFT TAB   &kp RET &lt 3 SPACE &mt_hyper
                         >;
                 };
-                raise_layer {
+                nav_layer {
 // -----------------------------------------------------------------------------------------
 // |      |     |     |     |     |     |   |     |     |     |     |     | DEL  |
 // |      |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
