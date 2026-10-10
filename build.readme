@@ -1,0 +1,27 @@
+docker run --rm -it \
+  -v "$(pwd)/zmk:/workspaces/zmk" \
+  -v "$(pwd)/zmk-config:/workspaces/zmk-config" \
+  zmkfirmware/zmk-build-arm:3.5-branch
+
+
+# Navigate to the app folder
+cd /workspaces/zmk/app
+
+# Initialize west and pull dependencies (this might take a few minutes)
+west init -l config
+west update
+
+
+west build -d build/left -b nice_nano@2.0.0//zmk -- -DSHIELD=corne_left -DZMK_CONFIG=/workspaces/zmk-config/config
+west build -d build/right -b nice_nano@2.0.0//zmk -- -DSHIELD=corne_right -DZMK_CONFIG=/workspaces/zmk-config/config
+
+
+(Note: If you ever need to clean out the old failed build attempt completely, add the -p flag right after west build to start fresh.)
+
+
+Where to grab your files on Windows
+
+Once the builds finish, open your Windows File Explorer and navigate to your zmk workspace folder. You will find your ready-to-flash files here:
+• ⬅️ Left Side Firmware: zmk/app/build/left/zephyr/zmk.uf2
+• ➡️ Right Side Firmware: zmk/app/build/right/zephyr/zmk.uf2
+Put each half of your Corne into bootloader mode (double-tap the physical reset button on the nice!nano) and drag the corresponding .uf2 file onto the USB drive that appears.

@@ -87,7 +87,23 @@
             tapping-term-ms = <200>; 
             bindings = <&kp>, <&sk_hyper>;               // Both &kp and &sk_hyper now expect 1 argument
         };
+
+        excl_ques_td: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mt EXCLAMATION LCTRL>, <&kp LS(SLASH)>;
+        };
     }; // Fixed: Added missing closing brace for behaviors block
+
+    combos {
+        compatible = "zmk,combos";
+        combo_mo4 {
+            timeout-ms = <50>;
+            key-positions = <37 40>;
+            bindings = <&mo 4>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -107,42 +123,57 @@
         };
         nav_layer {
 // -----------------------------------------------------------------------------------------
-// |      |     |     |     |     |     |   |     |     |     |     |     | DEL  |
+// |      |     |BKsp | DEL |     |     |   |     | PRV | PLAY| NXT |     | DEL  |
 // |      |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
-// |      |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    |     |     |     |   |     |     |     |
+// |      |     |LG(X)|LG(C)|LG(V)|     |   |     |     |     |     |     |      |
+//                    |     |hyEND|     |   |     |     |     |
             bindings = <
-&trans  &trans  &trans &trans   &trans  &trans  &trans &trans  &trans &trans &trans &kp DEL
-&trans  &trans  &trans &trans   &trans  &trans  &kp LEFT  &kp DOWN &kp UP  &kp RIGHT  &trans   &trans
-&trans  &trans  &trans &trans   &trans  &trans  &trans &trans  &trans  &trans &trans &trans
-                        &trans  &trans  &trans  &trans &trans  &trans
-            >;
-        };
-        lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |studio_unlock|     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-            bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &studio_unlock       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+&trans  &trans  &kp BACKSPACE &kp DEL  &trans  &trans  &trans &kp C_PREVIOUS &kp C_PLAY_PAUSE &kp C_NEXT &trans &kp DEL
+&trans  &trans  &trans &trans   &trans  &trans  &kp LEFT  &kp DOWN &kp UP  &kp RIGHT  &kp F19   &trans
+&trans  &trans  &kp LG(X) &kp LG(C)  &kp LG(V) &trans  &trans &trans  &trans  &trans &trans &trans
+                        &trans  &kp LC(LA(LS(LG(END))))  &trans  &trans &trans  &trans
             >;
         };
 
-        raise_layer {
+        num_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+// |      |  ^  |  <  |  >  |  @  |  #  |   |     |  7  |  8  |  9  |     |      |
+// | hyEND| !C? | S-  |  A+ |  G= |  $  |   |  \  |  4  |  5  |  6  |     |   "  |
+// |      |  ?  |  _  |  *  |  &  |  %  |   |  |  |  1  |  2  |  3  |     |      |
+//                    |     |     |     |   |  ,  |  0  |  .  |
+            bindings = <
+&trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp N7 &kp N8 &kp N9 &trans &trans
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &mt LEFT_SHIFT MINUS  &mt LALT + &mt LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
+&trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp N1 &kp N2 &kp N3 &trans &trans
+                        &trans   &trans  &trans  &kp COMMA &kp N0  &kp PERIOD
+            >;
+        };
+
+        symbol_layer {
+// -----------------------------------------------------------------------------------------
+// |      |  ^  |  <  |  >  |  @  |  #  |   |     |  "  |  {  |  }  |     |      |
+// | hyEND| !C? | S-  |  A+ |  G= |  $  |   |  \  |  '  |  (  |  )  |     |   "  |
+// |      |  ?  |  _  |  *  |  &  |  %  |   |  |  |  _  |  [  |  ]  |     |      |
+//                    |     |     |     |   |     |     |     |
+            bindings = <
+&trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp LS(SINGLE_QUOTE) &kp LS(LEFT_BRACKET) &kp LS(RIGHT_BRACKET) &trans &trans
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &mt LSHIFT MINUS  &mt LALT + &mt LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &mt RGUI SINGLE_QUOTE &mt RALT LEFT_PARENTHESIS &mt RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
+&trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp LS(MINUS) &kp LEFT_BRACE &kp RIGHT_BRACE &trans &trans
+                        &trans   &trans  &trans  &trans &trans  &trans
+            >;
+        };
+
+        lower_layer {
+// -----------------------------------------------------------------------------------------
+// |unlock|  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
             bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &studio_unlock    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &trans &trans &trans &trans &trans
+   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
+                                    &trans     &trans       &trans      &trans  &trans   &trans
             >;
         };
     };
