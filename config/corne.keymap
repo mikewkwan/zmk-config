@@ -92,7 +92,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt EXCLAMATION LCTRL>, <&kp LS(SLASH)>;
+            bindings = <&hml EXCLAMATION LCTRL>, <&kp LS(SLASH)>;
         };
     }; // Fixed: Added missing closing brace for behaviors block
 
@@ -143,7 +143,7 @@
 //                    |     |     |     |   |  ,  |  0  |  .  |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp N7 &kp N8 &kp N9 &trans &trans
-&kp LC(LA(LS(LG(END))))  &excl_ques_td  &mt LEFT_SHIFT MINUS  &mt LALT LS(EQUAL) &mt LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hml LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp N1 &kp N2 &kp N3 &trans &trans
                         &trans   &trans  &trans  &kp COMMA &kp N0  &kp PERIOD
             >;
@@ -157,7 +157,7 @@
 //                    |     |     |     |   |     |     |     |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp LS(SINGLE_QUOTE) &kp LS(LEFT_BRACKET) &kp LS(RIGHT_BRACKET) &trans &trans
-&kp LC(LA(LS(LG(END))))  &excl_ques_td  &mt LSHIFT MINUS  &mt LALT LS(EQUAL) &mt LGUI EQUAL &kp LS(N4) &kp BACKSLASH &mt RGUI SINGLE_QUOTE &mt RALT LEFT_PARENTHESIS &mt RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hml LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmr RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp LS(MINUS) &kp LEFT_BRACE &kp RIGHT_BRACE &trans &trans
                         &trans   &trans  &trans  &trans &trans  &trans
             >;
