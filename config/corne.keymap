@@ -22,7 +22,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>; 
-            bindings = <&kp &kp>; // Fixed: Removed comma and split brackets
+            bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>; 
             hold-trigger-on-release;
         };
@@ -33,7 +33,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
-            bindings = <&kp &kp>; // Fixed: Removed comma and split brackets
+            bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
@@ -46,7 +46,7 @@
             tapping-term-ms = <175>;             
             quick-tap-ms = <175>;
             require-prior-idle-ms = <0>;          
-            bindings = <&kp &kp>; // Fixed: Removed comma and split brackets
+            bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;
         };
@@ -57,7 +57,7 @@
             tapping-term-ms = <175>;             
             quick-tap-ms = <175>;
             require-prior-idle-ms = <0>;          
-            bindings = <&kp &kp>; // Fixed: Removed comma and split brackets
+            bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
@@ -91,8 +91,15 @@
         excl_ques_td: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hml EXCLAMATION LCTRL>, <&kp LS(SLASH)>;
+            tapping-term-ms = <150>;
+            bindings = <&hml LCTRL EXCLAMATION>, <&kp LS(SLASH)>;
+        };
+
+        semi_col_td: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&hmr RCTRL SEMICOLON>, <&kp LS(SEMICOLON)>;
         };
     }; // Fixed: Added missing closing brace for behaviors block
 
@@ -116,7 +123,7 @@
 //                    | Hy` | l2SPC | ShTab |   | ENT | l3SPC  | modstickyhyper |
             bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &lt 1 ESC &hml LCTRL A &hmsl LSHIFT S &hml LALT D &hml LGUI F &kp G   &kp H &hmr RGUI J  &hmr RALT K     &hmsr RSHIFT L   &hmr RCTRL SEMI &kp SQT
+   &lt 1 ESC &hml LCTRL A &hmsl LSHIFT S &hml LALT D &hml LGUI F &kp G   &kp H &hmr RGUI J  &hmr RALT K     &hmsr RSHIFT L   &semi_col_td &kp SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
                   &hyper_tap LC(LS(LA(LGUI))) GRAVE &lt 2 SPACE  &mt LSHIFT TAB   &kp RET &lt 3 SPACE &hyper_ht LC(LA(LS(LGUI))) LC(LA(LS(LGUI)))
             >;
@@ -143,7 +150,7 @@
 //                    |     |     |     |   |  ,  |  0  |  .  |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp N7 &kp N8 &kp N9 &trans &trans
-&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hml LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hmsl LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp N1 &kp N2 &kp N3 &trans &trans
                         &trans   &trans  &trans  &kp COMMA &kp N0  &kp PERIOD
             >;
@@ -157,7 +164,7 @@
 //                    |     |     |     |   |     |     |     |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp LS(SINGLE_QUOTE) &kp LS(LEFT_BRACKET) &kp LS(RIGHT_BRACKET) &trans &trans
-&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hml LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmr RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &excl_ques_td  &hmsl LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmsr RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp LS(MINUS) &kp LEFT_BRACE &kp RIGHT_BRACE &trans &trans
                         &trans   &trans  &trans  &trans &trans  &trans
             >;
@@ -166,9 +173,9 @@
         lower_layer {
 // -----------------------------------------------------------------------------------------
 // |unlock|  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |     |      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+//                    |     |     |     |   |     |     |     |
             bindings = <
    &studio_unlock    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &trans &trans &trans &trans &trans
