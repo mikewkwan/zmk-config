@@ -125,12 +125,12 @@
         num_layer {
 // -----------------------------------------------------------------------------------------
 // |      |  ^  |  <  |  >  |  @  |  #  |   |     |  7  |  8  |  9  |     |      |
-// | hyEND| C! | S-  |  A+ |  G= |  $  |   |  \  |  4  |  5  |  6  |     |   "  |
+// | hyEND|  C! | S-  |  A+ |  G= |  $  |   |  \  |  4  |  5  |  6  |     |   "  |
 // |      |  ?  |  _  |  *  |  &  |  %  |   |  |  |  1  |  2  |  3  |     |      |
 //                    |     |     |     |   |  ,  |  0  |  .  |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp N7 &kp N8 &kp N9 &trans &trans
-&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &kp N4 &kp N5 &kp N6 &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &hmr RGUI N4 &hmr RALT N5 &hmsr RSHIFT N6 &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp N1 &kp N2 &kp N3 &trans &trans
                         &trans   &trans  &trans  &kp COMMA &kp N0  &kp PERIOD
             >;
@@ -139,12 +139,12 @@
         symbol_layer {
 // -----------------------------------------------------------------------------------------
 // |      |  ^  |  <  |  >  |  @  |  #  |   |     |  "  |  {  |  }  |     |      |
-// | hyEND| C! | S-  |  A+ |  G= |  $  |   |  \  |  '  |  (  |  )  |     |   "  |
+// | hyEND|  C! | S-  |  A+ |  G= |  $  |   |  \  |  '  |  (  |  )  |     |   "  |
 // |      |  ?  |  _  |  *  |  &  |  %  |   |  |  |  _  |  [  |  ]  |     |      |
 //                    |     |     |     |   |     |     |     |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp LS(SINGLE_QUOTE) &kp LS(LEFT_BRACKET) &kp LS(RIGHT_BRACKET) &trans &trans
-&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmsr RSHIFT RIGHT_PARENTHESIS &trans &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmsr RSHIFT RIGHT_PARENTHESIS &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp LS(MINUS) &kp LEFT_BRACE &kp RIGHT_BRACE &trans &trans
                         &trans   &trans  &trans  &trans &trans  &trans
             >;
