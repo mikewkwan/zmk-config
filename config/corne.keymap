@@ -26,7 +26,7 @@
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <280>;
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;
         };
@@ -36,7 +36,7 @@
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <280>;
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
@@ -47,7 +47,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
         };
     }; // Fixed: Added missing closing brace for behaviors block
 
