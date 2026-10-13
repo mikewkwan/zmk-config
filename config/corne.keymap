@@ -19,49 +19,23 @@
 
 / {
     behaviors {
-        // --- Standard Timeless Mods (Ctrl, Alt, Gui) ---
+        // --- Homerow Mods ---
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <280>;
+            tapping-term-ms = <175>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>; 
             bindings = <&kp &kp>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>; 
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;
         };
         hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <280>;
+            tapping-term-ms = <175>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp &kp>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release;
-        };
-
-        // --- Specialized Fast Shift Mods ---
-        hmsl: homerow_shift_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <175>;             
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <0>;          
-            bindings = <&kp &kp>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>;
-            hold-trigger-on-release;
-        };
-        hmsr: homerow_shift_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <175>;             
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <0>;          
             bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
@@ -69,7 +43,7 @@
         hyper_tap: hyper_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "HYPER_TAP";
-            #binding-cells = <2>; 
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
@@ -99,19 +73,19 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
 // |NAVESC|  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  -   |
 //                    | Hy` |NUMSP|ShTab|   | ENT |SYSPC | stickyhyper |
             bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &lt 1 ESC &hml LCTRL A &hmsl LSHIFT S &hml LALT D &hml LGUI F &kp G   &kp H &hmr RGUI J  &hmr RALT K     &hmsr RSHIFT L   &hmr RCTRL SEMICOLON &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+   &lt 1 ESC &hml LCTRL A &hml LSHIFT S &hml LALT D &hml LGUI F &kp G   &kp H &hmr RGUI J  &hmr RALT K     &hmr RSHIFT L   &hmr RCTRL SEMICOLON &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp MINUS
                   &hyper_tap LC(LS(LA(LGUI))) GRAVE &lt 2 SPACE  &mt LSHIFT TAB   &kp RET &lt 3 SPACE &sk LC(LA(LS(LGUI)))
             >;
         };
         nav_layer {
 // -----------------------------------------------------------------------------------------
 // |      |     |BKsp | DEL |     |     |   |     | PRV | PLAY| NXT |     | DEL  |
-// |      |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
+// |      |     |     |     |     |     |   | LFT | DWN |  UP | RGT | F19 |      |
 // |      |     |LG(X)|LG(C)|LG(V)|     |   |     |     |     |     |     |      |
 //                    |     |hyEND|     |   |     |     |     |
             bindings = <
@@ -130,7 +104,7 @@
 //                    |     |     |     |   |  ,  |  0  |  .  |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp N7 &kp N8 &kp N9 &trans &trans
-&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &hmr RGUI N4 &hmr RALT N5 &hmsr RSHIFT N6 &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hml LEFT_SHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4)  &kp BACKSLASH &hmr RGUI N4 &hmr RALT N5 &hmr RSHIFT N6 &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp N1 &kp N2 &kp N3 &trans &trans
                         &trans   &trans  &trans  &kp COMMA &kp N0  &kp PERIOD
             >;
@@ -144,7 +118,7 @@
 //                    |     |     |     |   |     |     |     |
             bindings = <
 &trans  &kp LS(N6)  &kp LS(COMMA)  &kp LS(PERIOD)   &kp LS(N2)  &kp LS(N3)  &trans &kp LS(SINGLE_QUOTE) &kp LS(LEFT_BRACKET) &kp LS(RIGHT_BRACKET) &trans &trans
-&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hmsl LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmsr RSHIFT RIGHT_PARENTHESIS &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
+&kp LC(LA(LS(LG(END))))  &hml LCTRL EXCLAMATION  &hml LSHIFT MINUS  &hml LALT LS(EQUAL) &hml LGUI EQUAL &kp LS(N4) &kp BACKSLASH &hmr RGUI SINGLE_QUOTE &hmr RALT LEFT_PARENTHESIS &hmr RSHIFT RIGHT_PARENTHESIS &hmr RCTRL LS(SEMICOLON) &kp LS(SINGLE_QUOTE)
 &trans  &kp LS(SLASH)  &kp LS(MINUS)  &kp LS(N8)   &kp LS(N7)  &kp LS(N5)  &kp LS(BACKSLASH) &kp LS(MINUS) &kp LEFT_BRACE &kp RIGHT_BRACE &trans &trans
                         &trans   &trans  &trans  &trans &trans  &trans
             >;
