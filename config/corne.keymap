@@ -24,7 +24,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <175>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
@@ -34,7 +34,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <175>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp &kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
